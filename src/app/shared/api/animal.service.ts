@@ -15,4 +15,21 @@ export class AnimalService {
       email: 'email@google.com',
     };
   }
+
+  getAll(): Animal[] {
+    return [
+      {
+        name: 'Milou',
+        species: 'dog',
+        phoneNumber: '01.23.45.67.89',
+        email: 'email@google.com',
+      },
+      {
+        name: 'Idéfix',
+        species: 'dog',
+        phoneNumber: '01.23.45.67.89',
+        email: 'email@google.com',
+      },
+    ];
+  }
 }
