@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../shared/api/animal';
 import { AnimalService } from '../../shared/api/animal.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-animal-detail',
@@ -10,7 +10,7 @@ import { Observable, switchMap } from 'rxjs';
   styleUrls: ['./animal-detail.component.scss'],
 })
 export class AnimalDetailComponent implements OnInit {
-  animal$?: Observable<Animal>;
+  animal?: Animal;
 
   constructor(
     private animalService: AnimalService,
@@ -18,10 +18,14 @@ export class AnimalDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.animal$ = this.activedRoute.paramMap.pipe(
-      switchMap((paramMap) =>
-        this.animalService.get(Number(paramMap.get('id')))
+    this.activedRoute.paramMap
+      .pipe(
+        switchMap((paramMap) =>
+          this.animalService.get(Number(paramMap.get('id')))
+        )
       )
-    );
+      .subscribe((data) => {
+        this.animal = data;
+      });
   }
 }
