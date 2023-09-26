@@ -8,16 +8,23 @@ import { AnimalService } from '../../shared/api/animal.service';
   styleUrls: ['./animal-list.component.scss'],
 })
 export class AnimalListComponent implements OnInit {
-  animals: Animal[];
+  animals?: Animal[];
 
   constructor(private animalService: AnimalService) {}
 
   ngOnInit(): void {
-    this.animals = this.animalService.getAll();
+    this.refreshData();
   }
 
   onDeleteItem(animal: Animal): void {
-    const index = this.animals.indexOf(animal);
-    this.animals.splice(index, 1);
+    this.animalService.delete(animal.id).subscribe(() => {
+      this.refreshData();
+    });
+  }
+
+  private refreshData(): void {
+    this.animalService.getAll().subscribe((data) => {
+      this.animals = data;
+    });
   }
 }
