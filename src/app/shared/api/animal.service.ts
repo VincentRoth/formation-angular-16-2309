@@ -30,6 +30,12 @@ export class AnimalService {
         phoneNumber: '01.23.45.67.89',
         email: 'email@google.com',
       },
+      {
+        name: 'Garfield',
+        species: 'cat',
+        phoneNumber: '01.23.45.67.89',
+        email: 'email@google.com',
+      },
     ];
   }
 }
