@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnimalListComponent } from './animal-list/animal-list.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { AnimalComponent } from './animal.component';
+import { hasRightGuard } from '../shared/auth/has-right.guard';
+import { Right } from '../shared/auth/right';
 
 const routes: Routes = [
   {
@@ -14,6 +16,10 @@ const routes: Routes = [
         path: ':id',
         component: AnimalDetailComponent,
         title: 'Animal Details',
+        canActivate: [hasRightGuard],
+        data: {
+          right: Right.ANIMAL_GET,
+        },
       },
     ],
   },
