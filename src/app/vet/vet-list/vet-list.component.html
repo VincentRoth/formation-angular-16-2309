@@ -2,6 +2,7 @@
   <li *ngFor="let vet of vets">
     {{ vet.firstName }} {{ vet.lastName }}
     <a [routerLink]="['/vets', vet.id]">Voir</a>
+    <a [routerLink]="['/vets', 'edit', vet.id]">Modifier</a>
     <button (click)="onDeleteItem(vet)">Suppression</button>
   </li>
 </ul>
