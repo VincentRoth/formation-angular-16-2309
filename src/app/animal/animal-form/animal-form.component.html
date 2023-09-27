@@ -1,10 +1,28 @@
-<form *ngIf="animal" (ngSubmit)="onSubmit()">
+<form *ngIf="animal" #animalForm="ngForm" (ngSubmit)="onSubmit()">
   <label for="name">Nom</label>
-  <input id="name" name="name" [(ngModel)]="animal.name" />
+  <input
+    id="name"
+    name="name"
+    [(ngModel)]="animal.name"
+    required
+    #nameCtrl="ngModel"
+  />
+  <p *ngIf="animalForm.submitted && nameCtrl.hasError('required')">
+    Ce champs est requis
+  </p>
   <br />
 
   <label for="species">Espèce</label>
-  <input id="species" name="species" [(ngModel)]="animal.species" />
+  <input
+    id="species"
+    name="species"
+    [(ngModel)]="animal.species"
+    required
+    #speciesCtrl="ngModel"
+  />
+  <p *ngIf="animalForm.submitted && speciesCtrl.hasError('required')">
+    Ce champs est requis
+  </p>
   <br />
 
   <label for="veterinarian">Vétérinaire</label>
