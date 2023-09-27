@@ -1,4 +1,4 @@
-<form [formGroup]="vetFormGroup" (ngSubmit)="onSubmit()">
+<form *ngIf="vetFormGroup" [formGroup]="vetFormGroup" (ngSubmit)="onSubmit()">
   <label for="firstName">Prénom</label>
   <input id="firstName" formControlName="firstName" />
   <br />
