@@ -31,4 +31,11 @@ export abstract class AbstractCrudService<T extends { id?: number }> {
   delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.endPoint + '/' + id);
   }
+
+  save(data: T): Observable<T> {
+    if (data.id) {
+      return this.update(data);
+    }
+    return this.create(data);
+  }
 }

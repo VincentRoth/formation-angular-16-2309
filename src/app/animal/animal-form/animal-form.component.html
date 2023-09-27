@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form *ngIf="animal" (ngSubmit)="onSubmit()">
   <label for="name">Nom</label>
   <input id="name" name="name" [(ngModel)]="animal.name" />
   <br />

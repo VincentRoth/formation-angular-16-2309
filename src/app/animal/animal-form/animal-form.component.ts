@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../shared/api/animal';
 import { AnimalService } from '../../shared/api/animal.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal-form',
@@ -11,17 +11,29 @@ import { Router } from '@angular/router';
 export class AnimalFormComponent implements OnInit {
   animal: Animal;
 
-  constructor(private animalService: AnimalService, private router: Router) {}
+  constructor(
+    private animalService: AnimalService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.animal = {
-      name: undefined,
-      species: undefined,
-    };
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.animalService.get(Number(id)).subscribe((data) => {
+        this.animal = data;
+      });
+    } else {
+      this.animal = {
+        name: undefined,
+        species: undefined,
+      };
+    }
   }
 
   onSubmit(): void {
-    this.animalService.create(this.animal).subscribe(() => {
+    this.animalService.save(this.animal).subscribe(() => {
       this.router.navigate(['/animals']);
     });
   }
