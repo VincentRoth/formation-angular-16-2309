@@ -3,3 +3,5 @@
 <a [routerLink]="['/animals', model.id]">Voir</a>
 <a [routerLink]="['/animals', 'edit', model.id]">Modifier</a>
 <button (click)="onDelete()">Suppression</button>
+
+<ng-content></ng-content>
