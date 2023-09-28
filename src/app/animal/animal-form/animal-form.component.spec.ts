@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AnimalFormComponent } from './animal-form.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('AnimalFormComponent', () => {
   let component: AnimalFormComponent;
@@ -8,7 +11,8 @@ describe('AnimalFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AnimalFormComponent]
+      declarations: [AnimalFormComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule],
     });
     fixture = TestBed.createComponent(AnimalFormComponent);
     component = fixture.componentInstance;
