@@ -1,0 +1,8 @@
+{
+  "title": "{{ title }} for {{ vets }}",
+  "nav": {
+    "home": "Home",
+    "vets": "Veterinarians",
+    "animals": "Animals"
+  }
+}
