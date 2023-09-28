@@ -1,8 +1,11 @@
-<ul>
-  <li *ngFor="let animal of animals">
-    <app-animal-item
-      [model]="animal"
-      (deletion)="onDeleteItem($event)"
-    ></app-animal-item>
-  </li>
-</ul>
+<mat-list>
+  <ng-container *ngFor="let animal of animals; let last = last">
+    <mat-list-item>
+      <app-animal-item
+        [model]="animal"
+        (deletion)="onDeleteItem($event)"
+      ></app-animal-item>
+    </mat-list-item>
+    <mat-divider *ngIf="!last"></mat-divider>
+  </ng-container>
+</mat-list>

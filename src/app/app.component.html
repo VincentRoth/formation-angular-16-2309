@@ -1,8 +1,9 @@
-<h1>{{ title }} app is running!</h1>
-
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/vets">Vets</a>
-</nav>
+<mat-toolbar color="primary">
+  <h1>{{ title }} app is running!</h1>
+  <nav>
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/vets">Vets</a>
+  </nav>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
